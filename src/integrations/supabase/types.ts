@@ -763,6 +763,8 @@ export type Database = {
           telefone: string | null
           template_id: string | null
           updated_at: string | null
+          arquivo_url: string | null
+          arquivo_nome: string | null
         }
         Insert: {
           approval_token?: string | null
@@ -782,6 +784,8 @@ export type Database = {
           telefone?: string | null
           template_id?: string | null
           updated_at?: string | null
+          arquivo_url?: string | null
+          arquivo_nome?: string | null
         }
         Update: {
           approval_token?: string | null
@@ -801,6 +805,8 @@ export type Database = {
           telefone?: string | null
           template_id?: string | null
           updated_at?: string | null
+          arquivo_url?: string | null
+          arquivo_nome?: string | null
         }
         Relationships: [
           {
