@@ -30,7 +30,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, DollarSign, FileText, Send } from "lucide-react";
+import { Calendar, Clock, DollarSign, FileText, Send, Paperclip, ExternalLink } from "lucide-react";
 
 const quoteSchema = z.object({
   status: z.string(),
@@ -211,6 +211,23 @@ export function QuoteForm({
                   {new Date(quote.created_at).toLocaleDateString('en-US')}
                 </p>
               </div>
+              {quote.arquivo_url && (
+                <div className="pt-2 border-t">
+                  <Label className="text-sm font-medium text-muted-foreground">Attached File</Label>
+                  <div className="mt-1.5">
+                    <a
+                      href={quote.arquivo_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-2 text-sm bg-primary/10 text-primary hover:bg-primary/20 rounded-md transition-colors w-full font-medium"
+                    >
+                      <Paperclip className="h-4 w-4 shrink-0" />
+                      <span className="truncate flex-1">{quote.arquivo_nome || "View Attached File"}</span>
+                      <ExternalLink className="h-3.5 w-3.5 opacity-70 shrink-0" />
+                    </a>
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
 
