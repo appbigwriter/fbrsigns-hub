@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Edit, Eye, Trash2, Filter, Search, Clock, CheckCircle, XCircle, FileText, ArrowRight } from "lucide-react";
+import { Plus, Edit, Eye, Trash2, Filter, Search, Clock, CheckCircle, XCircle, FileText, ArrowRight, Paperclip } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -206,7 +206,21 @@ export default function Quotes() {
                           </TableCell>
                           <TableCell>
                             <div className="max-w-xs">
-                              <div className="font-medium">{quote.servico}</div>
+                              <div className="font-medium flex items-center gap-1.5">
+                                <span>{quote.servico}</span>
+                                {quote.arquivo_url && (
+                                  <a
+                                    href={quote.arquivo_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title={`View attachment: ${quote.arquivo_nome || 'File'}`}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="text-primary hover:text-primary/80 inline-flex items-center"
+                                  >
+                                    <Paperclip className="h-3.5 w-3.5" />
+                                  </a>
+                                )}
+                              </div>
                               <div className="text-sm text-muted-foreground truncate">
                                 {quote.descricao}
                               </div>
